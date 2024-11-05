@@ -1,0 +1,8 @@
+  public class Espacio {
+    private int codigo;
+    private String tipoEspacio;
+    private int capacidad;
+    private String nombre;
+    private EstadoEspacio espacio;
+    private Permiso permiso;
+  }
