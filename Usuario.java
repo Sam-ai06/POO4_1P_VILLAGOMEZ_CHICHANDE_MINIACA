@@ -41,13 +41,13 @@ public class Usuario {
         System.out.println("Creando reserva sin parámetros...");
     }
 
-    // Método MostrarMenu
+
     public void MostrarMenu() {
         System.out.println("Mostrando menú...");
-        // Implementación del método
+
     }
 
-    // Método EspaciosDisponibles
+
     public void EspaciosDisponibles(String fecha, String tipoEspacio) {
         System.out.println("Mostrando espacios disponibles para la fecha " + fecha + " y tipo de espacio " + tipoEspacio);
     }
