@@ -6,7 +6,15 @@ public class Espacio{
   private EstadoEspacio espacio;
   private Permiso permiso;
   
-
+  //Constructor
+  public Espacio(String codigo, TipoEspacio tEspacio, int capacidad, String nombre, EstadoEspacio espacio, Permiso permiso){
+    this.codigo = codigo;
+    this.tipoEspacio = tEspacio;
+    this.capacidad = capacidad;
+    this.nombre = nombre;
+    this.espacio = espacio;
+    this.permiso = permiso;
+  }
 
   //metodos getters
   public String getCodigo(){
