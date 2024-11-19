@@ -1,12 +1,12 @@
 
 public abstract class Usuario {
-    private String nombre;
-    private String apellido;
-    private String codigo;
-    private String cedula;
-    private String contrasena;
-    private String correo;
-    private String rol;
+    protected String nombre;
+    protected String apellido;
+    protected String codigo;
+    protected String cedula;
+    protected String contrasena;
+    protected String correo;
+    protected String rol;
 
     public Usuario(String cedula, String nombre, String apellido, String codigo, String contrasena, String correo, String rol) {
         this.cedula = cedula;
@@ -18,13 +18,9 @@ public abstract class Usuario {
         this.rol = rol;
     }
 
-    public void reservarEspacio(String fecha, String tipoEspacio, String motivo) {
-        System.out.println("Reservando espacio...");
-    }
+    public abstract void reservar();
 
-    public void enviarCorreo(String destinatario, String asunto, String mensaje) {
-        System.out.println("Enviando correo a " + destinatario);
-    }
+    public abstract void Enviarcorreo(String mensaje);
   
     public void consultarReserva(Date fecha) {
         System.out.println("Consultando reserva para la fecha: " + fecha);
