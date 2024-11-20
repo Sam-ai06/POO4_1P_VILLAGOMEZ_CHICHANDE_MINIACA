@@ -10,13 +10,13 @@ public class Reserva{
   private boolean correoNotificado;
 
   //constructor
-  public Reserva(String codigoReserva, String codigoUsuario, String cedulaUsuario, String fechaReserva, String codigoEspacio, String tipoEspacio, EstadoReserva estadoReserva, String motivo, bolean StringcorreoNitificado){
+  public Reserva(String codigoReserva, String codigoUsuario, String cedulaUsuario, String fechaReserva, String codigoEspacio, String tipoEspacio, EstadoReserva estadoReserva, String motivo, boolean correoNotificado){
     this.codigoReserva = codigoReserva;
     this.codigoUsuario = codigoUsuario;
     this.cedulaUsuario = cedulaUsuario;
     this.fechaReserva = fechaReserva;
-    this.codigoEspacio = codigoEspacio
-    this.tipoEspacio = tipoEspacio
+    this.codigoEspacio = codigoEspacio;
+    this.tipoEspacio = tipoEspacio;
     this.estadoReserva = estadoReserva;
     this.motivo = motivo;
     this.correoNotificado = correoNotificado;
