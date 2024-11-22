@@ -7,6 +7,13 @@ public abstract class Usuario {
     protected String contrasena;
     protected String correo;
     protected String rol;
+    //listas
+    ArrayList<String> listaUsuario = plataforma.LeeFichero("espacios.txt");
+    ArrayList<String> listaEstudiantes = plataforma.LeeFichero("estudianes.txt");
+    ArrayList<String> listaProfesores = plataforma.LeeFichero("profesores.txt");
+    ArrayList<String> listaAdministradores = plataforma.LeeFichero("administradores.txt");
+    ArrayList<String> listaReserva = plataforma.LeeFichero("reservas.txt");
+    ArrayList<String> listaEspacio = plataforma.LeeFichero("espacios.txt");
 
     public Usuario(String cedula, String nombre, String apellido, String codigo, String contrasena, String correo, String rol) {
         this.cedula = cedula;
@@ -18,12 +25,29 @@ public abstract class Usuario {
         this.rol = rol;
     }
 
-    public abstract void reservar();
+    protected abstract void reservar(String fecha, String espacio, Usuario user);
 
     public abstract void Enviarcorreo(String mensaje);
+
+    protected abstract int mostrarMenu();
   
     public void consultarReserva(Date fecha) {
-        System.out.println("Consultando reserva para la fecha: " + fecha);
+        SimpleDateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaS = dateF.format(fecha);
+        String codigoE = "";
+        for(String LR: listaReserva){
+            String[] partesR = LR.split(" | ");
+            codigoE = partesR[4];
+            for(String LE: listaEspacio){
+                String[] partesE = LE.split(" | ");
+                for(String LEST: listaEstudiantes){
+                    String[] partesEST = LEST.split(" | ");
+                    if (partesR[3].equals(fechaS) && partesE[0].equals(codigoE) && partesR[1].equals(partesEST[0])) {
+                        System.out.println(partesR[0]+" | "+partesR[3]+" | "+partesR[5]+" | "+partesE[2]+" | "+partesE[3]+" | "+partesEST[2]+partesEST[3]+" | "+partesR[6]);
+                    }
+                }
+            }
+        }
     }
 
     public void ServicioR(String parametros2) {
@@ -37,10 +61,7 @@ public abstract class Usuario {
     }
 
 
-    public void MostrarMenu() {
-        System.out.println("Mostrando menú...");
-
-    }
+    
 
 
     public void EspaciosDisponibles(String fecha, String tipoEspacio) {
