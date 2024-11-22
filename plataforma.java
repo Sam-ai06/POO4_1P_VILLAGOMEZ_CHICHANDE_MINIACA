@@ -1,85 +1,69 @@
-import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.Reader;
+
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 public class plataforma{
-
-
-
-    ArrayList<String> usuarios= new ArrayList<>();
-    ArrayList<String> estudiantes = new ArrayList<>();
-    ArrayList<String> profesores = new ArrayList<>();
-    ArrayList<String> administradores = new ArrayList<>();
-    ArrayList<String> espacios = new ArrayList<>();
-
-
-    public class manejoArchivos{
-
-        public static ArrayList<String> leerFichero(String nombreArchivo){
-            ArrayList<String> lineas = new ArrayList<>();
-            File archivo = null;
-            FileReader lector = null;
-            BufferedReader buffer = null;
-            
-            try{
-                archivo = new File(nombreArchivo);
-                lector = new FileReader(archivo, StandardCharsets.UTF_8);
-                buffer = new BufferedReader(buffer);
-
-
-                String linea;
-                while ((linea = buffer.readLine()) !=null) {
-                    System.out.println(linea);
-                    lineas.add(linea);
-                    
-                }
-            } catch (Exception e){
-                e.printStackTrace();
-            }finally{
-
-                try {
-                    if (null!=lector) {
-                        lector.close();
-                    }
-                } catch (Exception e2) {
-                    e2.printStackTrace();
-                }
-            }
-            return lineas;
-        }
-    }
-
-
-
-    public static void EscrirArchivo(String nombreArchivo, String linea){
-        FileWriter fichero = null;
-        BufferedWriter buffer2 = null;
+    public static ArrayList<String> LeeFichero(String nombrearchivo) {
+        ArrayList<String> lineas = new ArrayList<>();
+        File archivo = null;
+        FileReader fr = null;
+        BufferedReader br = null;
 
         try {
-            fichero = new FileWriter(nombreArchivo, true);
-            buffer2 = new BufferedWriter(fichero);
-            buffer2.write(linea+"\n");
-            System.out.println("demo");
-            
+            archivo = new File(nombrearchivo);
+            fr = new FileReader(archivo,StandardCharsets.UTF_8);
+            br = new BufferedReader(fr);
+
+            // Lectura del fichero
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                lineas.add(linea);
+
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
-        } finally{
+        } finally {
             try {
-                
-                if (null!= fichero){
-                    buffer2.close();
+                if (null != fr) {
+                    fr.close();
                 }
-            }   catch (Exception e2) {
-                    e2.printStackTrace();
-             
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+        return lineas;
+
+    }
+
+    public static void EscribirArchivo(String nombreArchivo, String linea) {
+
+        FileWriter fichero = null;
+        BufferedWriter bw = null;
+      
+        try {
+            fichero = new FileWriter(nombreArchivo,true);
+            bw = new BufferedWriter(fichero);
+            bw.write(linea+"\n");
+            System.out.println("ksdsdlsd");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (null != fichero) {
+                    //fichero.close();
+                    bw.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
             }
         }
     }
 
     
 }
-
