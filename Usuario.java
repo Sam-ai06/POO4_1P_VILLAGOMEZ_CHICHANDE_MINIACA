@@ -1,8 +1,120 @@
-// import java.sql.Date;
-// import java.text.SimpleDateFormat;
-// import java.util.ArrayList;
+//import java.sql.Date;
+//import java.text.SimpleDateFormat;
+//import java.util.ArrayList;
+    
+public abstract class Usuario {
 
-// public abstract class Usuario {
+    private String codigo;
+    private String nombres;
+    private String apellidos;
+    private String cedula;
+    private String usuario;
+    private String contrasenia;
+    private String correo;
+    private String rol;
+
+
+    public Usuario(String[] datos) {
+        
+        this.codigo = datos[0].trim();
+        this.cedula = datos[1].trim();
+        this.nombres = datos[2].trim();
+        this.apellidos = datos[3].trim();              //constructor que inicializa al usuario usando una linea del archivo
+        this.usuario = datos[4].trim();
+        this.contrasenia = datos[5].trim();
+        this.correo = datos[6].trim();
+
+}
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+
+    public String getNombres() {
+        return nombres;
+    }
+
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+
+    public String getCedula() {
+        return cedula;
+    }
+
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+
+    public String getCorreo() {
+        return correo;
+    }
+
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+
+    public String getRol() {
+        return rol;
+    }
+
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public abstract void mostrarmenu(); /// por llenar
+
+
+}
+
+ 
+    
+
+
+
 //     protected String nombre;
 //     protected String apellido;
 //     protected String codigo;

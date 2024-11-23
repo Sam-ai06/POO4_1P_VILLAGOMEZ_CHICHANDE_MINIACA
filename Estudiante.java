@@ -19,12 +19,7 @@ public class Estudiante extends Usuario {
     public void setCarrera(String carrera) {
         this.carrera = carrera;
     }
-
-    public Estudiante(String cedula, String nombre, String apellido, String codigo, String contrasena, String correo,
-            String rol, String matricula, String carrera) {
-        super(cedula, nombre, apellido, codigo, contrasena, correo, rol);
-        this.matricula = matricula;
-        this.carrera = carrera;
+    
     }
     @Override
     public void reservar(String fecha, String espacio, Usuario user) {
@@ -74,10 +69,4 @@ public class Estudiante extends Usuario {
         sc.nextLine();
         return op;
     }
-    
 
-    
-
-    
-
-}

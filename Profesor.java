@@ -1,9 +1,11 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Profesor extends Usuario {
 
     private String facultad;
     private ArrayList<String> materias;
+    Scanner sc = new Scanner(System.in);
 
 
     public String getFacultad() {
@@ -18,35 +20,52 @@ public class Profesor extends Usuario {
     public void setMaterias(ArrayList<String> materias) {
         this.materias = materias;
     }
-
-    public Profesor(String cedula, String nombre, String apellido, String codigo, String contrasena, String correo,
-            String rol, String facultad, ArrayList<String> materias) {
-        super(cedula, nombre, apellido, codigo, contrasena, correo, rol);
+    public Profesor(String[] datos, String facultad, ArrayList<String> materias) {
+        super(datos);
         this.facultad = facultad;
         this.materias = materias;
     }
-
-
     @Override
-    public void Enviarcorreo(String mensaje) {
-        //por llenar
-    }
-    @Override
-    protected void reservar(String fecha, String espacio, Usuario user) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'reservar'");
-    }
-    @Override
-    protected int mostrarMenu() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarMenu'");
-    }
+    public void mostrarmenu() {
+        int opcion;
+        do  {
+        
+           System.out.println("menú de profesores: ");
+            System.out.println("=".repeat(50));
+            System.out.println("1.- reservar");
+            System.out.println("2.- consultar el estado dela reserva: ");
+            System.out.println("3.- salir");
+            opcion = sc.nextInt();
+            sc.nextLine();
 
+            switch (opcion) {
+                case 1:
+                    //aquí va el metodo para reservar
+                    break;
+                case 2:
+                    //aqui va el metodo para consultar el estado de la reserva
+                case 3:
+                System.out.println("saliendo...");
 
+                default:
+                System.out.println("opción no valida");
+                    break;
+            }
 
-    
-    
+    } while (opcion != 0);
+    }
 }
+
+    
+
+    
+
+
+
+
+    
+    
+
 
 
 
