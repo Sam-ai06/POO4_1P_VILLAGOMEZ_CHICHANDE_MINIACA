@@ -26,17 +26,28 @@ public class Profesor extends Usuario {
         this.materias = materias;
     }
 
-        
-    @Override
-    public void reservar() {
-        //por llenar
-    }
+
     @Override
     public void Enviarcorreo(String mensaje) {
         //por llenar
+    }
+    @Override
+    protected void reservar(String fecha, String espacio, Usuario user) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'reservar'");
+    }
+    @Override
+    protected int mostrarMenu() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mostrarMenu'");
     }
 
 
 
     
+    
 }
+
+
+
+

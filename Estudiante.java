@@ -4,6 +4,7 @@ public class Estudiante extends Usuario {
 
     private String matricula;
     private String carrera;
+    Scanner sc = new Scanner(System.in);
     
 
     public String getMatricula() {

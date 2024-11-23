@@ -12,7 +12,7 @@ public abstract class Usuario {
     protected String rol;
     //listas
     ArrayList<String> listaUsuario = plataforma.LeeFichero("espacios.txt");
-    ArrayList<String> listaEstudiantes = plataforma.LeeFichero("estudianes.txt");
+    ArrayList<String> listaEstudiantes = plataforma.LeeFichero("estudiantes.txt");
     ArrayList<String> listaProfesores = plataforma.LeeFichero("profesores.txt");
     ArrayList<String> listaAdministradores = plataforma.LeeFichero("administradores.txt");
     ArrayList<String> listaReserva = plataforma.LeeFichero("reservas.txt");
@@ -62,10 +62,6 @@ public abstract class Usuario {
     public void CrearReserva() {
         System.out.println("Creando reserva sin parámetros...");
     }
-
-
-    
-
 
     public void EspaciosDisponibles(String fecha, String tipoEspacio) {
         System.out.println("Mostrando espacios disponibles para la fecha " + fecha + " y tipo de espacio " + tipoEspacio);
