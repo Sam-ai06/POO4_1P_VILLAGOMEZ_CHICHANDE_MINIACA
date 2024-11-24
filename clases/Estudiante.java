@@ -6,28 +6,14 @@ public class Estudiante extends Usuario {
     private String matricula;
     private String carrera;
     Scanner sc = new Scanner(System.in);
-    
 
-    public String getMatricula() {
-        return matricula;
-    }
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-    public String getCarrera() {
-        return carrera;
-    }
-    public void setCarrera(String carrera) {
-        this.carrera = carrera;
-    }
-    
-    }
+    //metodos
     @Override
     public void reservar(String fecha, String espacio, Usuario user) {
         String codigoR = "";
         //mostrando los espacios disponibles
         EspaciosDisponibles(fecha, espacio);
-        //elegir el espacio a reservar
+        //elegiendo el espacio a reservar
         System.out.println("Ingrese el codigo del espacio que desea reservar");
         String codigo = sc.nextLine();
         System.out.println("Ingrese el motivo por el que desea reservar el espacio");
@@ -35,7 +21,7 @@ public class Estudiante extends Usuario {
         System.out.println("Desea crear la reserva? (S/N)");
         String crearReserva = sc.nextLine();
         if(crearReserva.equals("S")){
-            //generar codigo de reserva
+            //generando codigo de reserva
             for(String LR: listaReserva){
                 String[] partesR = LR.split(" | ");
                 codigoR = partesR[0];
@@ -48,8 +34,6 @@ public class Estudiante extends Usuario {
             plataforma.EscribirArchivo("reservas.txt", linea);
             //envio de email
             
-        }else{
-            mostrarMenu();
         }
     }
     
@@ -68,13 +52,46 @@ public class Estudiante extends Usuario {
     }
 
     @Override
-    public int mostrarMenu(){
-        System.out.println("Bienvenido");
-        System.out.println("1.  Reservar");
-        System.out.println("2.  Consultar Reserva");
-        System.out.println("Escoja la opccion que desea realizar");
-        int op = sc.nextInt();
-        sc.nextLine();
-        return op;
-    }
+    public void mostrarmenu() {
+        int opcion;
+        do  {
+        
+            System.out.println("Menú de estudiantes: ");
+            System.out.println("1.- Reservar");
+            System.out.println("2.- Consultar el estado de la reserva: ");
+            System.out.println("3.- Salir");
+            opcion = sc.nextInt();
+            sc.nextLine();
 
+            switch (opcion) {
+                case 1:
+                    //metodo para enviar correo
+                    break;
+                case 2:
+                    //aqui va el metodo para consultar el estado de la reserva
+                case 3:
+                System.out.println("saliendo...");
+
+                default:
+                System.out.println("opción no valida");
+                    break;
+            }
+
+        } while (opcion != 0);
+    }
+    
+    //getters y setters
+    public String getMatricula() {
+        return matricula;
+    }
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+    public String getCarrera() {
+        return carrera;
+    }
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+    
+}
