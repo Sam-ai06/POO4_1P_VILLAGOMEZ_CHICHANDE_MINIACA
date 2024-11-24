@@ -83,6 +83,7 @@ public class Profesor extends Usuario {
             //crear la reserva
             String linea = codigoR+" | "+user.getCodigo()+" | "+user.cedula+" | "+fecha+" | "+codigo+" | "+espacio.toUpperCase()+" | "+"APROBADO"+" | "+motivo;
             plataforma.EscribirArchivo("reservas.txt", linea);
+            contReserva++;
             //envio del mail
 
         }
