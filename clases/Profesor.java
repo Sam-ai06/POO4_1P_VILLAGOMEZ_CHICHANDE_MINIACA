@@ -1,3 +1,4 @@
+package clases;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -40,7 +41,7 @@ public class Profesor extends Usuario {
 
             switch (opcion) {
                 case 1:
-                    //aquí va el metodo para reservar
+                    //metodo para enviar correo
                     break;
                 case 2:
                     //aqui va el metodo para consultar el estado de la reserva
