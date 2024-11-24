@@ -1,6 +1,7 @@
 package clases;
 
-public class Usuario {
+public abstract class Usuario {
+    
     private String codigoUnico;
     private String cedula;
     private String nombres;
@@ -12,18 +13,19 @@ public class Usuario {
 
     
 
-    public Usuario(String codigoUnico, String cedula, String nombres, String apellidos, String usuario,
-            String contrasena, String correo, String rol) {
-        this.codigoUnico = codigoUnico;
-        this.cedula = cedula;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.usuario = usuario;
-        this.contrasena = contrasena;
-        this.correo = correo;
-        this.rol = rol;
+    public Usuario(String[] datos) {
+       
+            this.codigoUnico = datos[0].trim();
+            this.cedula = datos[1].trim();
+            this.nombres = datos[2].trim();
+            this.apellidos = datos[3].trim();
+            this.usuario = datos[4].trim();
+            this.contrasena = datos[5].trim();
+            this.correo = datos[6].trim();
+            this.rol = datos[7].trim();        
     }
 
+    public abstract void mostrarmenu(List<Espacio>espacios, List<Reserva> reservas, TipoEspacio TipoEspacio);
 
     public String getCodigoUnico() {
         return codigoUnico;
