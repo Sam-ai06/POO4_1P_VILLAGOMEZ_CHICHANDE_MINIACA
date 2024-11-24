@@ -8,24 +8,14 @@ public class Profesor extends Usuario {
     private ArrayList<String> materias;
     Scanner sc = new Scanner(System.in);
 
-
-    public String getFacultad() {
-        return facultad;
-    }
-    public void setFacultad(String facultad) {
-        this.facultad = facultad;
-    }
-    public ArrayList<String> getMaterias() {
-        return materias;
-    }
-    public void setMaterias(ArrayList<String> materias) {
-        this.materias = materias;
-    }
+    //constructor
     public Profesor(String[] datos, String facultad, ArrayList<String> materias) {
         super(datos);
         this.facultad = facultad;
         this.materias = materias;
     }
+
+    //metodos
     @Override
     public void mostrarmenu() {
         int opcion;
@@ -96,6 +86,20 @@ public class Profesor extends Usuario {
             //envio del mail
 
         }
+    }
+
+    //getters y setters
+    public String getFacultad() {
+        return facultad;
+    }
+    public void setFacultad(String facultad) {
+        this.facultad = facultad;
+    }
+    public ArrayList<String> getMaterias() {
+        return materias;
+    }
+    public void setMaterias(ArrayList<String> materias) {
+        this.materias = materias;
     }
 }
 
