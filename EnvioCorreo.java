@@ -30,9 +30,9 @@ public class EnviarCorreo {
             Message mes = new MimeMessage(sesion);
             mes.setFrom(new InternetAddress(user,"APP DE RESERVAS"));
             mes.setRecipients(Message.RecipientType.TO,InternetAddress.parse("jminaca@espol.edu.ec")); //cambiar lo que hay dentro de internetaddress.parse poner el atributo de la clase estudiante o administrador.
-            mes.setSubject(pass);
-            mes.setText(pass);
-            Transport.send(mes);
+            mes.setSubject(pass);  //modificar el pass por el tema que se requiere
+            mes.setText(pass);     //el texto que se colocara por correo
+            Transport.send(mes);     //envio del mensaje
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
