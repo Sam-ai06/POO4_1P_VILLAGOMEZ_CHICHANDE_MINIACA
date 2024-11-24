@@ -5,7 +5,7 @@ import javax.mail.internet.MimeMessage;
 import io.github.cdimascio.dotenv.*;
 import java.util.Properties;
 
-public class EnviarCorreo {
+public class EnvioCorreo {
         Dotenv dot = Dotenv.load();
 
         String host = dot.get("MAIL_HOST");
