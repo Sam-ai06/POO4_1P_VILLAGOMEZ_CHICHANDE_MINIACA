@@ -13,7 +13,6 @@ public class EnvioCorreo {
         String user = dot.get("MAIL_USER");
         String pass = dot.get("MAIL_PASS");
 
-        // Configuración de propiedades para el correo
         Properties prop = new Properties();
         prop.put("mail.smtp.host", host);
         prop.put("mail.smtp.port", port);
