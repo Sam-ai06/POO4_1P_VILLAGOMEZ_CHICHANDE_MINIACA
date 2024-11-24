@@ -53,9 +53,19 @@ public class Estudiante extends Usuario {
             mostrarMenu();
         }
     }
+    
     @Override
-    public void Enviarcorreo(String mensaje) {
-       //por llenar
+    public void Enviarcorreo(EnvioCorreo EnvioCorreo) {
+       try {
+            emailService.enviarCorreo(
+                this.correo,
+                "Notificación para Estudiante",
+                "Este es un mensaje de prueba para un estudiante."  //se pueden cambiar estos mensajes
+            );
+        } catch (MessagingException e) {
+            System.out.println("Error al enviar correo: " + e.getMessage());
+        }
+     }
     }
 
     @Override
