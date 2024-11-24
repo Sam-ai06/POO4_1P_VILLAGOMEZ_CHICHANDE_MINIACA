@@ -67,28 +67,6 @@ public abstract class Usuario {
     }
 
 
-    
-public abstract class Usuario {
-
-    private String codigo;
-    private String nombres;
-    private String apellidos;
-    private String cedula;
-    private String usuario;
-    private String contrasenia;
-    private String correo;
-    private String rol;
-
-
-    public Usuario(String[] datos) {
-        
-        this.codigo = datos[0].trim();
-        this.cedula = datos[1].trim();
-        this.nombres = datos[2].trim();
-        this.apellidos = datos[3].trim();              //constructor que inicializa al usuario usando una linea del archivo
-        this.usuario = datos[4].trim();
-        this.contrasenia = datos[5].trim();
-        this.correo = datos[6].trim();
     public void EspaciosDisponibles(String fecha, String tipoEspacio) {
         System.out.println("Mostrando espacios disponibles para la fecha " + fecha + " y tipo de espacio " + tipoEspacio);
         for(String LE: listaEspacio){
@@ -99,7 +77,7 @@ public abstract class Usuario {
         }
     }
 
-}
+
 
     public String getCodigo() {
         return codigo;
@@ -183,7 +161,7 @@ public abstract class Usuario {
     public abstract void mostrarmenu(); /// por llenar
 
 
-}
+    }
 
  
     
