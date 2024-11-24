@@ -24,14 +24,9 @@ public class Estudiante extends Usuario {
     @Override
     public void reservar(String fecha, String espacio, Usuario user) {
         String codigoR = "";
-        //mostrara los espacios disponibles del tipo de espacio elegido
-        for(String LE: listaEspacio){
-            String[] partesE = LE.split(" | ");
-            if(espacio.toUpperCase().equals(partesE[1]) && partesE[4].equals("DISPONIBLE")){
-                System.out.println("Codigo: "+partesE[0]+" - Nombre: "+partesE[2]+" - Capacidad: "+partesE[3]);
-            }
-        }
-        //elegira el espacio a reservar
+        //mostrando los espacios disponibles
+        EspaciosDisponibles(fecha, espacio);
+        //elegir el espacio a reservar
         System.out.println("Ingrese el codigo del espacio que desea reservar");
         String codigo = sc.nextLine();
         System.out.println("Ingrese el motivo por el que desea reservar el espacio");
@@ -47,16 +42,26 @@ public class Estudiante extends Usuario {
             int codigoUR = Integer.parseInt(codigoR);
             codigoUR++;
             codigoR = String.valueOf(codigoUR);
-            //crear la reserva
+            //guardando la reserva
             String linea = codigoR+" | "+user.getCodigo()+" | "+user.cedula+" | "+fecha+" | "+codigo+" | "+espacio.toUpperCase()+" | "+"PENDIENTE"+" | "+motivo;
             plataforma.EscribirArchivo("reservas.txt", linea);
         }else{
             mostrarMenu();
         }
     }
+    
     @Override
-    public void Enviarcorreo(String mensaje) {
-       //por llenar
+    public void enviarCorreo() {
+       try {
+            EnvioCorreo.enviarCorreo(
+                this.correo,
+                "Notificación para Estudiante",
+                "Este es un mensaje de prueba para un estudiante."  //se pueden cambiar estos mensajes
+            );
+        } catch (MessagingException e) {
+            System.out.println("Error al enviar correo: " + e.getMessage());
+        }
+     }
     }
 
     @Override
