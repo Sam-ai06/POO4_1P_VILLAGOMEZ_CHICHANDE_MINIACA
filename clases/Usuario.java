@@ -11,7 +11,13 @@ public abstract class Usuario {
     private String correo;
     private String rol;
 
-    
+    //listas
+    ArrayList<String> listaUsuario = plataforma.LeeFichero("espacios.txt");
+    ArrayList<String> listaEstudiantes = plataforma.LeeFichero("estudianes.txt");
+    ArrayList<String> listaProfesores = plataforma.LeeFichero("profesores.txt");
+    ArrayList<String> listaAdministradores = plataforma.LeeFichero("administradores.txt");
+    ArrayList<String> listaReserva = plataforma.LeeFichero("reservas.txt");
+    ArrayList<String> listaEspacio = plataforma.LeeFichero("espacios.txt");
 
     public Usuario(String[] datos) {
        
@@ -24,9 +30,14 @@ public abstract class Usuario {
             this.correo = datos[6].trim();
             this.rol = datos[7].trim();        
     }
-
+    //metodos abstractos
     public abstract void mostrarmenu(List<Espacio>espacios, List<Reserva> reservas, TipoEspacio TipoEspacio);
+    protected abstract void reservar(String fecha, String espacio, Usuario user);
 
+    //metodos
+    
+    
+    //getters y setters
     public String getCodigoUnico() {
         return codigoUnico;
     }
