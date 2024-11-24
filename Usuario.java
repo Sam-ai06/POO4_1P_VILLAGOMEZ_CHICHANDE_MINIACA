@@ -69,6 +69,12 @@ public abstract class Usuario {
 
     public void EspaciosDisponibles(String fecha, String tipoEspacio) {
         System.out.println("Mostrando espacios disponibles para la fecha " + fecha + " y tipo de espacio " + tipoEspacio);
+        for(String LE: listaEspacio){
+            String[] partesE = LE.split(" | ");
+            if(tipoEspacio.toUpperCase().equals(partesE[1]) && partesE[4].equals("DISPONIBLE")){
+                System.out.println("Codigo: "+partesE[0]+" - Nombre: "+partesE[2]+" - Capacidad: "+partesE[3]);
+            }
+        }
     }
 
     public void GuardarReserva() {
