@@ -55,7 +55,7 @@ public class Estudiante extends Usuario {
     }
     
     @Override
-    public void enviarCorreo(EnvioCorreo EnvioCorreo) {
+    public void enviarCorreo() {
        try {
             EnvioCorreo.enviarCorreo(
                 this.correo,
