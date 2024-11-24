@@ -12,58 +12,17 @@ public class Usuario {
 
     
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public Usuario(String codigoUnico, String cedula, String nombres, String apellidos, String usuario,
+            String contrasena, String correo, String rol) {
+        this.codigoUnico = codigoUnico;
+        this.cedula = cedula;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.correo = correo;
+        this.rol = rol;
+    }
 
 
     public String getCodigoUnico() {
