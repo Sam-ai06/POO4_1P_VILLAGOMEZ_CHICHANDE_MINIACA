@@ -26,7 +26,7 @@ public class plataforma{
             System.out.println("Bienvenido al sistema de reserva de espacio");
             switch (rol) {
                 case "E":               
-                    
+                          
                     break;
                 case "P":
                     
