@@ -57,7 +57,7 @@ public class Estudiante extends Usuario {
     @Override
     public void Enviarcorreo(EnvioCorreo EnvioCorreo) {
        try {
-            emailService.enviarCorreo(
+            EnvioCorreo.enviarCorreo(
                 this.correo,
                 "Notificación para Estudiante",
                 "Este es un mensaje de prueba para un estudiante."  //se pueden cambiar estos mensajes
