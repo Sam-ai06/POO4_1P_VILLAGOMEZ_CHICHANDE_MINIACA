@@ -11,6 +11,7 @@ public abstract class Usuario {
     private String contrasena;
     private String correo;
     private String rol;
+    protected static int contReserva;
 
     //listas
     ArrayList<String> listaUsuario = plataforma.LeeFichero("espacios.txt");
