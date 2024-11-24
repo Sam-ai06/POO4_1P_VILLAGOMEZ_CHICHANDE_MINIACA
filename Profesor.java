@@ -32,7 +32,7 @@ public class Profesor extends Usuario {
         //por llenar
     }
     @Override
-    public void Enviarcorreo(EnvioCorreo EnvioCorreo) {
+    public void enviarCorreo(EnvioCorreo EnvioCorreo) {
         try {
             EnvioCorreo.enviarCorreo(
                 this.correo,
