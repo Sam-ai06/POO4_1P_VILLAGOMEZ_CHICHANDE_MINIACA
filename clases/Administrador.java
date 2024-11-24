@@ -12,6 +12,35 @@ public class Administrador extends Usuario {
 
     //metodos
     @Override
+    public void mostrarmenu() {
+        int opcion;
+        do  {
+        
+            System.out.println("Menú de administradores: ");
+            System.out.println("1.- Gestionar reserva");
+            System.out.println("2.- Consultar el estado de la reserva: ");
+            System.out.println("3.- Salir");
+            opcion = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcion) {
+                case 1:
+                    //metodo para enviar correo
+                    break;
+                case 2:
+                    //aqui va el metodo para consultar el estado de la reserva
+                case 3:
+                System.out.println("saliendo...");
+
+                default:
+                System.out.println("opción no valida");
+                    break;
+            }
+
+    } while (opcion != 0);
+    }
+    
+    @Override
     public void reservar() {
         //NO RESERVA
     }
