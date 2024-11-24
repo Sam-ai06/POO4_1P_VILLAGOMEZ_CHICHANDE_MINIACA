@@ -39,4 +39,5 @@ public class plataforma{
             System.out.println("El usuario ingresado no existe");
         }
     }
+    }
 }
