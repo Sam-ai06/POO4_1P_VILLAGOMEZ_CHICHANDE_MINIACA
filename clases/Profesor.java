@@ -31,11 +31,11 @@ public class Profesor extends Usuario {
         int opcion;
         do  {
         
-           System.out.println("menú de profesores: ");
+            System.out.println("Menú de profesores: ");
             System.out.println("=".repeat(50));
-            System.out.println("1.- reservar");
-            System.out.println("2.- consultar el estado dela reserva: ");
-            System.out.println("3.- salir");
+            System.out.println("1.- Reservar");
+            System.out.println("2.- Consultar el estado de la reserva: ");
+            System.out.println("3.- Salir");
             opcion = sc.nextInt();
             sc.nextLine();
 
@@ -95,8 +95,6 @@ public class Profesor extends Usuario {
             plataforma.EscribirArchivo("reservas.txt", linea);
             //envio del mail
 
-        }else{
-            mostrarMenu();
         }
     }
 }
