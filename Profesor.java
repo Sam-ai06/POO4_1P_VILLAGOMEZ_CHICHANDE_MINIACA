@@ -32,8 +32,17 @@ public class Profesor extends Usuario {
         //por llenar
     }
     @Override
-    public void Enviarcorreo(String mensaje) {
-        //por llenar
+    public void Enviarcorreo(EnvioCorreo EnvioCorreo) {
+        try {
+            EnvioCorreo.enviarCorreo(
+                this.correo,
+                "Notificación para Profesor",
+                "Este es un mensaje de prueba para un profesor." //se puede cambiar este mensaje al necesitado solo es para tener una idea
+            );
+        } catch (MessagingException e) {
+            System.out.println("Error al enviar correo: " + e.getMessage());
+        }
+      }
     }
 
 
