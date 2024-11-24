@@ -46,6 +46,8 @@ public class Estudiante extends Usuario {
             //guardando la reserva
             String linea = codigoR+" | "+user.getCodigo()+" | "+user.cedula+" | "+fecha+" | "+codigo+" | "+espacio.toUpperCase()+" | "+"PENDIENTE"+" | "+motivo;
             plataforma.EscribirArchivo("reservas.txt", linea);
+            //envio de email
+            
         }else{
             mostrarMenu();
         }
