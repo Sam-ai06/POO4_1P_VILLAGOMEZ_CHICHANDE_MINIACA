@@ -30,7 +30,7 @@ public abstract class Usuario {
 
     protected abstract void reservar(String fecha, String espacio, Usuario user);
 
-    public abstract void enviarCorreo(EnvioCorreo envioCorreo);
+    public abstract void enviarCorreo();
 
     protected abstract int mostrarMenu();
   
