@@ -18,7 +18,8 @@ public abstract class Usuario {
     ArrayList<String> listaAdministradores = plataforma.LeeFichero("administradores.txt");
     ArrayList<String> listaReserva = plataforma.LeeFichero("reservas.txt");
     ArrayList<String> listaEspacio = plataforma.LeeFichero("espacios.txt");
-
+    
+    //constructor
     public Usuario(String[] datos) {
        
             this.codigoUnico = datos[0].trim();
@@ -30,12 +31,40 @@ public abstract class Usuario {
             this.correo = datos[6].trim();
             this.rol = datos[7].trim();        
     }
+    
     //metodos abstractos
     public abstract void mostrarmenu(List<Espacio>espacios, List<Reserva> reservas, TipoEspacio TipoEspacio);
     protected abstract void reservar(String fecha, String espacio, Usuario user);
 
     //metodos
+    protected void consultarReserva(Date fecha){
+        SimpleDateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaS = dateF.format(fecha);
+        String codigoE = "";
+        for(String LR: listaReserva){
+            String[] partesR = LR.split(" | ");
+            codigoE = partesR[4];
+            for(String LE: listaEspacio){
+                String[] partesE = LE.split(" | ");
+                for(String LEST: listaEstudiantes){
+                    String[] partesEST = LEST.split(" | ");
+                    if (partesR[3].equals(fechaS) && partesE[0].equals(codigoE) && partesR[1].equals(partesEST[0])) {
+                        System.out.println(partesR[0]+" | "+partesR[3]+" | "+partesR[5]+" | "+partesE[2]+" | "+partesE[3]+" | "+partesEST[2]+partesEST[3]+" | "+partesR[6]);
+                    }
+                }
+            }
+        }
+    }
     
+    public void EspaciosDisponibles(String fecha, String tipoEspacio) {
+        System.out.println("Mostrando espacios disponibles para la fecha " + fecha + " y tipo de espacio " + tipoEspacio);
+        for(String LE: listaEspacio){
+            String[] partesE = LE.split(" | ");
+            if(tipoEspacio.toUpperCase().equals(partesE[1]) && partesE[4].equals("DISPONIBLE")){
+                System.out.println("Codigo: "+partesE[0]+" - Nombre: "+partesE[2]+" - Capacidad: "+partesE[3]);
+            }
+        }
+    }
     
     //getters y setters
     public String getCodigoUnico() {
@@ -86,8 +115,5 @@ public abstract class Usuario {
     public void setRol(String rol) {
         this.rol = rol;
     }
-
-
     
-
 }
