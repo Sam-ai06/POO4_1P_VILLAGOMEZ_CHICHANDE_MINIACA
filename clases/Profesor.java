@@ -64,6 +64,7 @@ public class Profesor extends Usuario {
             cont++;
         }
         
+        
         //elegira el espacio a reservar
         System.out.println("Ingrese el codigo del espacio que desea reservar");
         String codigo = sc.nextLine();
@@ -84,10 +85,34 @@ public class Profesor extends Usuario {
             String linea = codigoR+" | "+user.getCodigo()+" | "+user.cedula+" | "+fecha+" | "+codigo+" | "+espacio.toUpperCase()+" | "+"APROBADO"+" | "+motivo;
             plataforma.EscribirArchivo("reservas.txt", linea);
             contReserva++;
-            //envio del mail
 
         }
     }
+
+         @Override
+         public void enviarCorreo() {
+            try {
+                // Formar el mensaje personalizado
+                String asunto = "Reserva realizada";
+                String mensaje = "Se le notifica que el profesor " + this.getNombre() + " " + this.getApellido() +
+                                 " ha realizado una reserva con código " + codigoReserva +
+                                 " para la fecha " + fechaReserva +
+                                 " en el auditorio " + espacioReserva.toUpperCase() +
+                                 " para la materia " + materiaSeleccionada + "."; //la materiaSeleccionada falta por agregar
+
+                 // Llamar al método estático de EnvioCorreo
+                   EnvioCorreo.enviarCorreo(
+                   correoAdministrador, // destinatario
+                   asunto,              // asunto
+                   mensaje              // mensaje
+                   );
+
+                  System.out.println("Correo enviado correctamente al administrador.");
+              } catch (MessagingException e) {
+                   System.out.println("Error al enviar correo: " + e.getMessage());
+                }
+         }
+
 
     //getters y setters
     public String getFacultad() {
