@@ -45,10 +45,37 @@ public class Administrador extends Usuario {
         //NO RESERVA
     }
 
-    @Override
-    public void Enviarcorreo(String mensaje) {
-        //por llenar
+@Override
+public void enviarCorreo(String codigoReserva, boolean aprobado, String motivo) {
+    try {
+        String estadoReserva = aprobado ? "aprobada" : "rechazada";
+        String mensajeCorreo = "Se ha " + estadoReserva + " su reserva con código " + codigoReserva;
+
+        // Incluir el motivo si la reserva fue rechazada
+        if (!aprobado) {
+            mensajeCorreo += " por el siguiente motivo: " + motivo + ".";
+        }
+
+        mensajeCorreo += "\n\nAtentamente,\nDepartamento Administrativo";
+        String asuntoCorreo = "Reserva " + estadoReserva;
+
+        // Aquí hay que recuperar el correo del estudiante desde el archivo
+        String correoEstudiante = obtenerCorreoEstudiante(codigoReserva);
+
+        // Enviar el correo
+        EnvioCorreo.enviarCorreo(
+            "correoAdministrador@app.com", // Correo del administrador qu puede ser el mismo de la app code que saque para el env
+            correoEstudiante,
+            asuntoCorreo,
+            mensajeCorreo 
+        );
+
+        System.out.println("Correo enviado al estudiante: " + correoEstudiante);
+
+    } catch (Exception e) {
+        System.out.println("Error al enviar correo: " + e.getMessage());
     }
+}
     
     public void gestionarReserva(String codigoR){
         //mostrando datos de la reserva
