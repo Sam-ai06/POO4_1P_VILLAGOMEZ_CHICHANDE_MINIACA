@@ -42,15 +42,23 @@ public class Estudiante extends Usuario {
     @Override
     public void enviarCorreo() {
        try {
-            EnvioCorreo.enviarCorreo(
-                this.correo,
-                "Notificación para Estudiante",
-                "Este es un mensaje de prueba para un estudiante."  //se pueden cambiar estos mensajes
-            );
-        } catch (MessagingException e) {
-            System.out.println("Error al enviar correo: " + e.getMessage());
-        }
-     }
+         String asunto = "Reserva realizada";
+         String mensaje = "El estudiante " + this.getNombre() + " " + this.getApellido() +
+                         " ha realizado una reserva con código " + codigo +
+                         " para la fecha " + fecha +
+                         " en la cancha " + espacio + ".\n\n" +
+                         "Ingrese al sistema para aprobar o rechazar la reserva.";
+
+        // Cambiar al correo administrador en ese caso no se si sera el mismo con el que coloque el codigo de apps de google
+         String correoAdministrador = "correoAdministrador@appreservas.com";
+         EnvioCorreo.enviarCorreo(  // Llama al método estático de EnvioCorreo con los datos personalizados
+             correoAdministrador, // destino admin
+             asunto,               // Asunto del correo
+             mensaje               // Mensaje del correo
+         );
+      } catch (MessagingException e) {
+        System.out.println("Error al enviar correo: " + e.getMessage());
+      }
     }
 
     @Override
