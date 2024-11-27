@@ -76,14 +76,20 @@ public class Estudiante extends Usuario {
             switch (opcion) {
                 case 1:
                     //metodo para enviar correo
+                Estudiante.enviarCorreo();
+                System.out.println("Se ha enciado el correo al administrador");
                     break;
                 case 2:
                     //aqui va el metodo para consultar el estado de la reserva
+                consultarReserva(fecha);
+                System.out.println("");
                 case 3:
                 System.out.println("saliendo...");
 
                 default:
                 System.out.println("opción no valida");
+                    break;
+            
                     break;
             }
 
