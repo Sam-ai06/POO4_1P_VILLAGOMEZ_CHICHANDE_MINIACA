@@ -39,11 +39,6 @@ public class Administrador extends Usuario {
 
     } while (opcion != 0);
     }
-    
-    @Override
-    public void reservar() {
-        //NO RESERVA
-    }
 
 @Override
 public void enviarCorreo(String codigoReserva, boolean aprobado, String motivo) {
