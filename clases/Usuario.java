@@ -14,12 +14,12 @@ public abstract class Usuario {
     protected static int contReserva;
 
     //listas
-    ArrayList<String> listaUsuario = plataforma.LeeFichero("espacios.txt");
-    ArrayList<String> listaEstudiantes = plataforma.LeeFichero("estudianes.txt");
-    ArrayList<String> listaProfesores = plataforma.LeeFichero("profesores.txt");
-    ArrayList<String> listaAdministradores = plataforma.LeeFichero("administradores.txt");
-    ArrayList<String> listaReserva = plataforma.LeeFichero("reservas.txt");
-    ArrayList<String> listaEspacio = plataforma.LeeFichero("espacios.txt");
+    ArrayList<String> listaUsuario = ManejoArchivo.LeeFichero("espacios.txt");
+    ArrayList<String> listaEstudiantes = ManejoArchivo.LeeFichero("estudianes.txt");
+    ArrayList<String> listaProfesores = ManejoArchivo.LeeFichero("profesores.txt");
+    ArrayList<String> listaAdministradores = ManejoArchivo.LeeFichero("administradores.txt");
+    ArrayList<String> listaReserva = ManejoArchivo.LeeFichero("reservas.txt");
+    ArrayList<String> listaEspacio = ManejoArchivo.LeeFichero("espacios.txt");
     
     //constructor
     public Usuario(String[] datos) {
