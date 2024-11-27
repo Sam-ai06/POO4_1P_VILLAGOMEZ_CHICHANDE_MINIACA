@@ -75,7 +75,7 @@ public abstract class Usuario {
     String destinatario = "";
     String asunto = "";
     String mensaje = "";
-    EnvioEmail.envioCorreo(destinatario, asunto, mensaje);
+    EnvioCorreo.envioCorreo(destinatario, asunto, mensaje);
 }
 
     //envio email profesores
@@ -83,7 +83,7 @@ public abstract class Usuario {
     String destinatario = "";
     String asunto = "";
     String mensaje = "";
-    EnvioEmail.envioCorreo(destinatario, asunto, mensaje);
+    EnvioCorreo.envioCorreo(destinatario, asunto, mensaje);
 }
 
 
