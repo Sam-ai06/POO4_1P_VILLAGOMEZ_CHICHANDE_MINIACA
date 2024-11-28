@@ -34,9 +34,15 @@ public class Estudiante extends Usuario {
             plataforma.EscribirArchivo("reservas.txt", linea);
             contReserva++;
             //envio de email
+            // Llamar al método de enviar correo al administrador
+            enviarCorreo();  // Asumiendo que el método está correctamente implementado en la clase Estudiante
 
-            
+            System.out.println("Reserva creada con éxito y correo enviado al administrador.");
+        } else {
+            System.out.println("Reserva cancelada.");
         }
+            
+      }
     }
     
     @Override
