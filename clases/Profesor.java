@@ -44,7 +44,7 @@ public class Profesor extends Usuario {
                     break;
             }
 
-    } while (opcion != 0);
+    } while (opcion != 3);
     }
 
     @Override
