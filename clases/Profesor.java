@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Profesor extends Usuario {
 
     private String facultad;
+    private String materiaSeleccionada;
     private ArrayList<String> materias;
     Scanner sc = new Scanner(System.in);
 
@@ -85,6 +86,10 @@ public class Profesor extends Usuario {
             String linea = codigoR+" | "+user.getCodigo()+" | "+user.cedula+" | "+fecha+" | "+codigo+" | "+espacio.toUpperCase()+" | "+"APROBADO"+" | "+motivo;
             plataforma.EscribirArchivo("reservas.txt", linea);
             contReserva++;
+            
+           
+            p.setMateriaSeleccionada(materiaSeleccionada); //con esto le asigno la materia al obj del profesor
+            p.enviarCorreo(); //llamo al metodo para enviar el correo
 
         }
     }
@@ -127,6 +132,14 @@ public class Profesor extends Usuario {
     public void setMaterias(ArrayList<String> materias) {
         this.materias = materias;
     }
+    public void setMateriaSeleccionada(String materia) {
+        this.materiaSeleccionada = materia;
+    }
+
+    public String getMateriaSeleccionada() {
+        return this.materiaSeleccionada;
+    }
+
 }
 
     
