@@ -73,25 +73,6 @@ public abstract class Usuario {
 
 
 
-    //envio email estudiantes
-    public void envioEmail(Reserva reserva, Espacio espacio){
-    String destinatario = "";
-    String asunto = "";
-    String mensaje = "";
-    EnvioCorreo.envioCorreo(destinatario, asunto, mensaje);
-}
-
-    //envio email profesores
-    public void envioEmail(Reserva reserva, Espacio espacio, String materia){
-    String destinatario = "";
-    String asunto = "";
-    String mensaje = "";
-    EnvioCorreo.envioCorreo(destinatario, asunto, mensaje);
-}
-
-
-
-    
     //getters y setters
     public String getCodigoUnico() {
         return codigoUnico;
