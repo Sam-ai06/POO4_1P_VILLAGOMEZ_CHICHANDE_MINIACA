@@ -36,6 +36,9 @@ public abstract class Usuario {
     
     //metodos abstractos
     public abstract void mostrarmenu(List<Espacio>espacios, List<Reserva> reservas, TipoEspacio TipoEspacio);
+
+    protected abstract void enviarCorreo();
+    
     protected abstract void reservar(String fecha, String espacio, Usuario user);
 
     //metodos
