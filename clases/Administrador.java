@@ -12,7 +12,7 @@ public class Administrador extends Usuario {
 
     //metodos
     @Override
-    public void mostrarmenu() {
+    public void mostrarmenu(Usuario user) {
         int opcion;
         do  {
         
@@ -25,10 +25,14 @@ public class Administrador extends Usuario {
 
             switch (opcion) {
                 case 1:
-                    //metodo para enviar correo
+                    System.out.println("Ingrese el codigo de la reserva a gestionar");
+                    String codigo = sc.nextLine();
+                    gestionarReserva(codigo);
                     break;
                 case 2:
-                    //aqui va el metodo para consultar el estado de la reserva
+                    System.out.println("Ingrese la fecha de la reserva que quiere consultar");
+                    String fechaC = sc.nextLine();
+                    consultarReserva(fechaC);
                 case 3:
                 System.out.println("saliendo...");
 
@@ -37,7 +41,7 @@ public class Administrador extends Usuario {
                     break;
             }
 
-    } while (opcion != 0);
+        } while (opcion != 0);
     }
 
 @Override
@@ -73,20 +77,23 @@ public void enviarCorreo(String codigoReserva, boolean aprobado, String motivo) 
 }
     
     public void gestionarReserva(String codigoR){
+        ArrayList<String> listReserva = new ArrayList<>();
         //mostrando datos de la reserva
         for(String LR: listaReserva){
             String[] partesR = LR.split(" | ");
             for(String LE: listaEspacio){
                 String[] partesE = LE.split(" | ");
-                for(String LEST: listaEstudiantes){
-                    String[] partesEST = LEST.split(" | ");
-                    if (codigoR.equals(partesR[0]) && partesR[4].equals(partesE[0]) && partesR[1].equals(partesEST[0])) {
-                        System.out.println(codigoR+" | "+partesR[3]+" | "+partesR[5]+" | "+partesE[2]+" | "+partesE[3]+" | "+partesEST[2]+partesEST[3]);
+                for(String listUsuario: listaUsuario){
+                    String[] partesUsuario = listUsuario.split(" | ");
+                    if (codigoR.equals(partesR[0]) && partesR[4].equals(partesE[0]) && partesR[1].equals(partesUsuario[0])) {
+                        System.out.println(codigoR+" | "+partesR[3]+" | "+partesR[5]+" | "+partesE[2]+" | "+partesE[3]+" | "+partesUsuario[2]+" "+partesUsuario[3]);
                     }
                 }
             }
         }
+        
         //toma de decision
+        String linea = "";
         System.out.println("Desea aprobar la peticion? (S/N)");
         String op = sc.nextLine();
         if (op.equals("N")) {
@@ -97,29 +104,41 @@ public void enviarCorreo(String codigoReserva, boolean aprobado, String motivo) 
                 if (codigoR.equals(partesR[0])) {
                     partesR[6] = "RECHAZADO";
                     partesR[7] = motivo;
-                    String linea = String.join(" | ", partesR);
-                    plataforma.EscribirArchivo("reservas.txt", linea);
+                    linea = String.join(" | ", partesR);
                 }
             }
+            //envio notificacion rechazado
+            enviarCorreo(codigoR, false, motivo);
         }else{
             for(String LR: listaReserva){
                 String[] partesR = LR.split(" | ");
                 if (codigoR.equals(partesR[0])) {
                     partesR[6] = "APROBADO";
-                    String linea = String.join(" | ", partesR);
-                    plataforma.EscribirArchivo("reservas.txt", linea);
+                    linea = String.join(" | ", partesR);
                 }
             }
+            //envio notificacion aprobado
+            enviarCorreo(codigoR, true, "");
         }
-        //envio de notificacion
-
+        //creando la lista de las reservas
+        for(String listR: listaReserva){
+            String[] partesR = listR.split(" | ");
+            String line = partesR[0]+" | "+partesR[1]+" | "+partesR[2]+" | "+partesR[3]+" | "+partesR[4]+" | "+partesR[5]+" | "+partesR[6]+" | "+partesR[7];
+            listReserva.add(line);
+        }
+        //vaciando el archivo reserva
+        ManejoArchivo.VaciarArchivo("reservas.txt");
+        //añadiendo la lista de las reservas y la reserva modificada
+        for(String anadirR: listReserva){
+            ManejoArchivo.EscribirArchivo("reservas.txt", anadirR);
+        }
+        ManejoArchivo.EscribirArchivo("reservas.txt", linea);
     }
     
     @override
     public void consultarReserva(Date fecha){
         SimpleDateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
         String fechaS = dateF.format(fecha);
-        String codigoE = "";
         //mostrando la cantidad de reservas creadas
         System.out.println("Número de reservas creadas: "+contReserva);
         //mostrando las reservas creadas
@@ -127,7 +146,7 @@ public void enviarCorreo(String codigoReserva, boolean aprobado, String motivo) 
             String[] partesR = LR.split(" | ");
             if (partesR[3].equals(fechaS)) {
                 for(String LU: listaUsuario){
-                    String[] partesU = LR.split(" | ");
+                    String[] partesU = LU.split(" | ");
                     if(partesU[7].equals("E")){
                         for(String LE: listaEstudiantes){
                             String[] partesE = LE.split(" | ");

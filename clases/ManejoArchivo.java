@@ -22,20 +22,47 @@ public class ManejoArchivo {
 
         } catch (Exception e) {
             e.printStackTrace();
-            
+
         } 
         return lineas;
 
     }
 
     public static void EscribirArchivo(String nombreArchivo, String linea) {
-        // Usamos try-with-resources para simplificar el cierre de recursos
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
-            bw.write(linea + "\n");
+
+        FileWriter fichero = null;
+        BufferedWriter bw = null;
+      
+        try {
+            fichero = new FileWriter(nombreArchivo,true);
+            bw = new BufferedWriter(fichero);
+            bw.write(linea+"\n");
 
         } catch (Exception e) {
             e.printStackTrace();  // Maneja los errores de escritura en el archivo
         }
     
+    }
+
+    public static void VaciarArchivo(String nombreArchivo) {
+
+        try {
+            FileWriter file = new FileWriter(nombreArchivo,false);
+            file.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                // Nuevamente aprovechamos el finally para 
+                // asegurarnos que se cierra el fichero.
+                if (null != fichero) {
+                    //fichero.close();
+                    bw.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
     }
 }
