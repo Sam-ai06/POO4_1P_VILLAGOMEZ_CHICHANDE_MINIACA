@@ -19,6 +19,16 @@ public class ManejoArchivo {
         return lineas;
     } 
 
+        // Método para escribir una línea al final del archivo (sin sobrescribir)
+    public static void EscribirArchivo(String nombreArchivo, String linea) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo, true))) {  // true permite añadir al final
+            bw.write(linea);  // Escribir la línea
+            bw.newLine();     // Añadir una nueva línea
+        } catch (IOException e) {
+            e.printStackTrace();  // Manejo de excepciones
+        }
+    }
+
 
 
     public static void ModificarEstadoEspacio(String nombreArchivo, String codigoEspacio, EstadoEspacio nuevoEstado) {
