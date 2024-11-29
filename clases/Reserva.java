@@ -1,3 +1,4 @@
+package clases;
 public class Reserva{
   private String codigoReserva;
   private String codigoUsuario;

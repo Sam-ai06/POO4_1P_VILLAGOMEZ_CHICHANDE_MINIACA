@@ -1,7 +1,5 @@
 package clases;
 
-import java.sql.Date;
-
 public abstract class Usuario {
     
     private String codigoUnico;
