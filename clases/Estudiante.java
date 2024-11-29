@@ -14,7 +14,7 @@ public class Estudiante extends Usuario {
         this.carrera = carrera;
     }
 
-    //metodos
+
     @Override
     public void reservar(String fecha, String espacio, Usuario user) {
         String codigoR = "";
@@ -40,9 +40,8 @@ public class Estudiante extends Usuario {
             String linea = codigoR+" | "+user.getCodigo()+" | "+user.cedula+" | "+fecha+" | "+codigo+" | "+espacio.toUpperCase()+" | "+"PENDIENTE"+" | "+motivo;
             plataforma.EscribirArchivo("reservas.txt", linea);
             contReserva++;
-            //envio de email
-            // Llamar al método de enviar correo al administrador
-            enviarCorreo();  // Asumiendo que el método está correctamente implementado en la clase Estudiante
+             
+            enviarCorreo();  
 
             System.out.println("Reserva creada con éxito y correo enviado al administrador.");
         } else {
@@ -62,12 +61,12 @@ public class Estudiante extends Usuario {
                          " en la cancha " + espacio + ".\n\n" +
                          "Ingrese al sistema para aprobar o rechazar la reserva.";
 
-        // Cambiar al correo administrador en ese caso no se si sera el mismo con el que coloque el codigo de apps de google
+        
          String correoAdministrador = "correoAdministrador@appreservas.com";
-         EnvioCorreo.enviarCorreo(  // Llama al método estático de EnvioCorreo con los datos personalizados
-             correoAdministrador, // destino admin
-             asunto,               // Asunto del correo
-             mensaje               // Mensaje del correo
+         EnvioCorreo.enviarCorreo(   datos personalizados
+             correoAdministrador, 
+             asunto,               
+             mensaje               
          );
       } catch (MessagingException e) {
         System.out.println("Error al enviar correo: " + e.getMessage());
@@ -134,7 +133,7 @@ public class Estudiante extends Usuario {
         } while (opcion != 3);
     }
     
-    //getters y setters
+    
         public String getMatricula() {
         return matricula;
         }
