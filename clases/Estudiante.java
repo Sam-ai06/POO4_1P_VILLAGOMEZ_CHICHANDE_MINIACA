@@ -1,4 +1,6 @@
 package clases;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Estudiante extends Usuario {
@@ -43,7 +45,7 @@ public class Estudiante extends Usuario {
         }
             
       }
-    }
+    
     
     @Override
     public void enviarCorreo() {
@@ -81,39 +83,68 @@ public class Estudiante extends Usuario {
 
             switch (opcion) {
                 case 1:
-                    //metodo para enviar correo
-                Estudiante.enviarCorreo();
-                System.out.println("Se ha enciado el correo al administrador");
-                    break;
-                case 2:
-                    //aqui va el metodo para consultar el estado de la reserva
-                consultarReserva(fecha);
-                System.out.println("");
-                case 3:
-                System.out.println("saliendo...");
+                    
+               System.out.println("ingrese la fecha para la que quiere reservar el espacio: ");
+               String fechaReserva = sc.nextLine();
+               System.out.println("ingrese el tipo de espacio que desea reservar: ");
+               String TipoEspacio = sc.nextLine();
+               SimpleDateFormat fechaDate = new SimpleDateFormat("dd/MM/yyyy");
+               Date fecha = null;
 
-                default:
-                System.out.println("opción no valida");
-                    break;
-            
-                    break;
+
+               try {
+                fecha = fechaDate.parse(fechaReserva);
+               } catch (Exception e) {
+                System.out.println("formato de fecha incorrecto. Asegúrese de usar dd/MM/yyyy");
+               }
+               reservar(fecha, TipoEspacio, null);
+               break;
+
+               case 2:
+               System.out.println("Ingrese la fecha de la reserva que desea consultar: ");
+                String fechaConsulta = sc.nextLine();
+                Date fechaConsultaDate = null;
+
+
+                try {
+                    fechaConsultaDate = fechaDate.parse(fechaConsulta);
+                    System.out.println("Fecha válida: " + fechaConsultaDate);
+                } catch (Exception e) {
+                    System.out.println("Formato de fecha incorrecto. Asegúrese de usar dd/MM/yyyy.");
+                     break;
+                    }
+
+                consultarReserva(fechaConsultaDate); 
+                break;
+               
+
+               case 3:
+               System.out.println("saliendo...");
+               
+               default:
+               System.out.println("opción no válida");
+                
             }
 
-        } while (opcion != 0);
+        } while (opcion != 3);
     }
     
     //getters y setters
-    public String getMatricula() {
+        public String getMatricula() {
         return matricula;
-    }
-    public void setMatricula(String matricula) {
+        }
+        public void setMatricula(String matricula) {
         this.matricula = matricula;
-    }
-    public String getCarrera() {
+        }
+        public String getCarrera() {
         return carrera;
-    }
-    public void setCarrera(String carrera) {
+        }
+        public void setCarrera(String carrera) {
         this.carrera = carrera;
-    }
+        }
+        
+        
+        
+    
     
 }
