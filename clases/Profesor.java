@@ -18,7 +18,7 @@ public class Profesor extends Usuario {
 
     //metodos
     @Override
-    public void mostrarmenu() {
+    public void mostrarmenu(Usuario user) {
         int opcion;
         do  {
         
@@ -32,10 +32,16 @@ public class Profesor extends Usuario {
 
             switch (opcion) {
                 case 1:
-                    //metodo para enviar correo
+                    System.out.println("Ingrese la fecha para la cual quiere reservar");
+                    String fechaR = sc.nextLine();
+                    System.out.println("Ingrese el tipo de espacio que desea reservar");
+                    String tipoEspacio = sc.nextLine();
+                    reservar(fechaR, tipoEspacio, user);
                     break;
                 case 2:
-                    //aqui va el metodo para consultar el estado de la reserva
+                    System.out.println("Ingrese la fecha de la reserva que quiere consultar");
+                    String fechaC = sc.nextLine();
+                    consultarReserva(fechaC);
                 case 3:
                 System.out.println("saliendo...");
 
@@ -44,19 +50,20 @@ public class Profesor extends Usuario {
                     break;
             }
 
-    } while (opcion != 3);
+        } while (opcion != 0);
     }
 
     @Override
     public void reservar(String fecha, String espacio, Usuario user) {
-        String codigoR = "";
         int cont = 1;
-        //mostrara los espacios disponibles del tipo de espacio elegido
-        for(String LE: listaEspacio){
-            String[] partesE = LE.split(" | ");
-            if(espacio.toUpperCase().equals(partesE[1]) && partesE[4].equals("DISPONIBLE")){
-                System.out.println("Codigo: "+partesE[0]+" - Nombre: "+partesE[2]+" - Capacidad: "+partesE[3]);
-            }
+        //mostrando los espacios disponibles
+        EspaciosDisponibles(fecha, espacio);
+
+        //materias que da el profesor
+        Profesor p = (Profesor) user;
+        for(String materias: p.materias){
+            System.out.println(cont+") "+materias);
+            cont++;
         }
         //materias que da el profesor
         Profesor p = (Profesor) user;
@@ -64,7 +71,6 @@ public class Profesor extends Usuario {
             System.out.println(cont+") "+materias);
             cont++;
         }
-        
         
         //elegira el espacio a reservar
         System.out.println("Ingrese el codigo del espacio que desea reservar");
@@ -75,22 +81,16 @@ public class Profesor extends Usuario {
         String crearReserva = sc.nextLine();
         if(crearReserva.equals("S")){
             //generar codigo de reserva
-            for(String LR: listaReserva){
-                String[] partesR = LR.split(" | ");
-                codigoR = partesR[0];
-            }
-            int codigoUR = Integer.parseInt(codigoR);
-            codigoUR++;
-            codigoR = String.valueOf(codigoUR);
+            generarCodigoR++;
+            String codigoR = String.valueOf(generarCodigoR);
             //crear la reserva
-            String linea = codigoR+" | "+user.getCodigo()+" | "+user.cedula+" | "+fecha+" | "+codigo+" | "+espacio.toUpperCase()+" | "+"APROBADO"+" | "+motivo;
-            plataforma.EscribirArchivo("reservas.txt", linea);
+            String linea = codigoR+" | "+user.getCodigoUnico()+" | "+user.getCedula()+" | "+fecha+" | "+codigo+" | "+espacio.toUpperCase()+" | "+"APROBADO"+" | "+motivo;
+            ManejoArchivo.EscribirArchivo("reservas.txt", linea);
             contReserva++;
-            
-           
+
+            //envio de notificacion
             p.setMateriaSeleccionada(materiaSeleccionada); //con esto le asigno la materia al obj del profesor
             p.enviarCorreo(); //llamo al metodo para enviar el correo
-
         }
     }
 
