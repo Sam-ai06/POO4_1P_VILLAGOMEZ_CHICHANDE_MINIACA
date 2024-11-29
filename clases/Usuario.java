@@ -35,16 +35,14 @@ public abstract class Usuario {
     }
     
     //metodos abstractos
-    public abstract void mostrarmenu(List<Espacio>espacios, List<Reserva> reservas, TipoEspacio TipoEspacio);
+    public abstract void mostrarmenu(Usuario user);
 
     protected abstract void enviarCorreo();
     
     protected abstract void reservar(String fecha, String espacio, Usuario user);
 
     //metodos
-    protected void consultarReserva(Date fecha){
-        SimpleDateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
-        String fechaS = dateF.format(fecha);
+    protected void consultarReserva(String fecha){
         String codigoE = "";
         for(String LR: listaReserva){
             String[] partesR = LR.split(" | ");
@@ -53,8 +51,8 @@ public abstract class Usuario {
                 String[] partesE = LE.split(" | ");
                 for(String LEST: listaEstudiantes){
                     String[] partesEST = LEST.split(" | ");
-                    if (partesR[3].equals(fechaS) && partesE[0].equals(codigoE) && partesR[1].equals(partesEST[0])) {
-                        System.out.println(partesR[0]+" | "+partesR[3]+" | "+partesR[5]+" | "+partesE[2]+" | "+partesE[3]+" | "+partesEST[2]+partesEST[3]+" | "+partesR[6]);
+                    if (partesR[3].equals(fecha) && partesE[0].equals(codigoE) && partesR[1].equals(partesEST[0])) {
+                        System.out.println(partesR[0]+" | "+partesR[3]+" | "+partesR[5]+" | "+partesE[2]+" | "+partesE[3]+" | "+partesEST[2]+" "+partesEST[3]+" | "+partesR[6]);
                     }
                 }
             }
