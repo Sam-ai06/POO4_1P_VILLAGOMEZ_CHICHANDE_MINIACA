@@ -32,23 +32,39 @@ public class Estudiante extends Usuario {
             //guardando la reserva
             String linea = codigoR+" | "+user.getCodigo()+" | "+user.cedula+" | "+fecha+" | "+codigo+" | "+espacio.toUpperCase()+" | "+"PENDIENTE"+" | "+motivo;
             plataforma.EscribirArchivo("reservas.txt", linea);
+            contReserva++;
             //envio de email
-            
+            // Llamar al método de enviar correo al administrador
+            enviarCorreo();  // Asumiendo que el método está correctamente implementado en la clase Estudiante
+
+            System.out.println("Reserva creada con éxito y correo enviado al administrador.");
+        } else {
+            System.out.println("Reserva cancelada.");
         }
+            
+      }
     }
     
     @Override
     public void enviarCorreo() {
        try {
-            EnvioCorreo.enviarCorreo(
-                this.correo,
-                "Notificación para Estudiante",
-                "Este es un mensaje de prueba para un estudiante."  //se pueden cambiar estos mensajes
-            );
-        } catch (MessagingException e) {
-            System.out.println("Error al enviar correo: " + e.getMessage());
-        }
-     }
+         String asunto = "Reserva realizada";
+         String mensaje = "El estudiante " + this.getNombre() + " " + this.getApellido() +
+                         " ha realizado una reserva con código " + codigo +
+                         " para la fecha " + fecha +
+                         " en la cancha " + espacio + ".\n\n" +
+                         "Ingrese al sistema para aprobar o rechazar la reserva.";
+
+        // Cambiar al correo administrador en ese caso no se si sera el mismo con el que coloque el codigo de apps de google
+         String correoAdministrador = "correoAdministrador@appreservas.com";
+         EnvioCorreo.enviarCorreo(  // Llama al método estático de EnvioCorreo con los datos personalizados
+             correoAdministrador, // destino admin
+             asunto,               // Asunto del correo
+             mensaje               // Mensaje del correo
+         );
+      } catch (MessagingException e) {
+        System.out.println("Error al enviar correo: " + e.getMessage());
+      }
     }
 
     @Override
@@ -66,14 +82,20 @@ public class Estudiante extends Usuario {
             switch (opcion) {
                 case 1:
                     //metodo para enviar correo
+                Estudiante.enviarCorreo();
+                System.out.println("Se ha enciado el correo al administrador");
                     break;
                 case 2:
                     //aqui va el metodo para consultar el estado de la reserva
+                consultarReserva(fecha);
+                System.out.println("");
                 case 3:
                 System.out.println("saliendo...");
 
                 default:
                 System.out.println("opción no valida");
+                    break;
+            
                     break;
             }
 
