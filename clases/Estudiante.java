@@ -8,6 +8,11 @@ public class Estudiante extends Usuario {
     private String matricula;
     private String carrera;
     Scanner sc = new Scanner(System.in);
+    public Estudiante(String[] datos, String matricula, String carrera) {
+        super(datos);
+        this.matricula = matricula;
+        this.carrera = carrera;
+    }
 
     //metodos
     @Override
