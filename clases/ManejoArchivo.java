@@ -29,7 +29,7 @@ public class ManejoArchivo {
             String linea = lineas.get(i);
             
             
-            String[] partes = linea.split(" \\| ");  /
+            String[] partes = linea.split(" \\| ");
             if (partes[0].equals(codigoEspacio)) {  
                
                 if (partes.length >= 4) {
