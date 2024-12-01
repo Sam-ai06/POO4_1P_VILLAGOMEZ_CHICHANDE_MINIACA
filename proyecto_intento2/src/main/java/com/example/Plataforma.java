@@ -10,10 +10,11 @@ public class Plataforma {
         Usuario.cargarReservas();
         
         //verificacion de usuario
-        System.out.println("Validacion de usuario");
-        System.out.println("Ingrese su usuario");
+        System.out.println("Validacion de usuario.");
+        System.out.println("-".repeat(20));
+        System.out.println("Ingrese su usuario: ");
         String user = sc.nextLine();
-        System.out.println("Ingrese su contraseña");
+        System.out.println("Ingrese su contraseña: ");
         String password = sc.nextLine();
         boolean userExists = false;
         for(Usuario usuario: Usuario.usuarios){
