@@ -43,7 +43,7 @@ public class Plataforma {
         }
 
         if (userExists == true) {
-            System.out.println("Gracios por usar nuestro servicio");
+            System.out.println("Gracias por usar nuestro servicio");
         }else{
             System.out.println("El usuario no existe");
         }
