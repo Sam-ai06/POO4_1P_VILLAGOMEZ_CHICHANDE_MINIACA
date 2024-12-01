@@ -5,14 +5,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import io.github.cdimascio.dotenv.*;
-
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
 import java.util.Properties;
 
 public class EnvioCorreo {
-
-     public static void enviarCorreo(String destinatario, String asunto, String mensaje) {
+    public static void enviarCorreo(String destinatario, String asunto, String mensaje) {
         Dotenv dot = Dotenv.load();
 
         String host = dot.get("MAIL_HOST");
@@ -43,6 +39,4 @@ public class EnvioCorreo {
             System.out.println(e.getMessage());
         }
     }
-
-
 }
