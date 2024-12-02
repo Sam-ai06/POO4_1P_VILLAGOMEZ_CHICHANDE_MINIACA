@@ -194,7 +194,6 @@ public abstract class Usuario {
 
 
     public void EspaciosDisponibles(LocalDate fecha, Usuario user) {
-        //DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String fechaString = fecha.format(formatoFecha);
         System.out.println("Mostrando todos los espacios disponibles");
         for(Reserva reserva: reservas){
@@ -269,20 +268,6 @@ public abstract class Usuario {
     }
     public void setRol(String rol) {
         this.rol = rol;
-    }
-
-
-    
-
-
-
-
-
-
-
-
-    
-
-    
+    }  
 
 }
