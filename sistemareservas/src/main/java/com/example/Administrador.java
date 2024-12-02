@@ -35,10 +35,13 @@ public class Administrador extends Usuario {
 
             switch (opcion) {
                 case 1:
-                    
+                    System.out.println("Ingrese la fecha para la cual desea reservar");
+                    String codigoR = sc.nextLine();
+                    gestionarReserva(codigoR);
                     break;
                 case 2:
-                    
+                    consultarReserva();
+                    break;
                 case 3:
                 System.out.println("saliendo...");
 
