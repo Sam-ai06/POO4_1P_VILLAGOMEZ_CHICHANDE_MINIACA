@@ -38,7 +38,7 @@ public abstract class Usuario {
     protected static ArrayList<Espacio> espacios = new ArrayList<>();
 
 
-    public abstract void mostrarMenu(Usuario usuario);
+    protected abstract void mostrarMenu(Usuario usuario);
     protected abstract void enviarCorreo();
     protected abstract void reservar(LocalDate fecha, Usuario usuario);
 
